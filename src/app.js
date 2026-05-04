@@ -1,12 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const sequelize = require('./models')
+const { sequelize } = require('./models');
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+
+// Rutas
+const authRoutes = require('./routes/auth.routes');
+
+// Registrar rutas
+app.use('/api/auth', authRoutes);
 
 // Health check
 app.get('/', (req, res) => {

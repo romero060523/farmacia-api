@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 3000;
 
 sequelize.authenticate()
   .then(() => {
-    console.log('Conexión a MySQL establecida');
+    console.log('Conexión a PostgreSQL establecida');
     return sequelize.sync({ alter: true }); // alter:true actualiza tablas sin borrar datos
   })
   .then(() => {

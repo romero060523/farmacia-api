@@ -21,9 +21,12 @@ const Usuario = sequelize.define('Usuario', {
     allowNull: false,
   },
   rol: {
-    type: DataTypes.ENUM('ADMIN', 'VENDEDOR', 'ALMACEN'),
+    type: DataTypes.STRING(20),
     allowNull: false,
     defaultValue: 'VENDEDOR',
+    validate: {
+      isIn: [['ADMIN', 'VENDEDOR', 'ALMACEN']],
+    },
   },
 }, {
   tableName: 'usuarios',

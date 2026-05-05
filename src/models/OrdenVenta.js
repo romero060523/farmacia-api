@@ -17,9 +17,12 @@ const OrdenVenta = sequelize.define('OrdenVenta', {
     allowNull: true,
   },
   Situacion: {
-    type: DataTypes.ENUM('PENDIENTE', 'COMPLETADO', 'ANULADO'),
+    type: DataTypes.STRING(20),
     allowNull: false,
     defaultValue: 'PENDIENTE',
+    validate: {
+      isIn: [['PENDIENTE', 'COMPLETADO', 'ANULADO']],
+    },
   },
 }, {
   tableName: 'orden_venta',

@@ -13,9 +13,12 @@ const OrdenCompra = sequelize.define('OrdenCompra', {
     defaultValue: DataTypes.NOW,
   },
   Situacion: {
-    type: DataTypes.ENUM('PENDIENTE', 'RECIBIDO', 'ANULADO'),
+    type: DataTypes.STRING(20),
     allowNull: false,
     defaultValue: 'PENDIENTE',
+    validate: {
+      isIn: [['PENDIENTE', 'RECIBIDO', 'ANULADO']],
+    },
   },
   Total: {
     type: DataTypes.DECIMAL(10, 2),
